@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebBanHang.Model.ChatLieu>
+
+@{
+    ViewBag.Title = "Chất Liệu";
+}
+
+<h2>Danh Sách Chất Liệu</h2>
+
+<p>
+    @Html.ActionLink("Thêm Mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên Chất Liệu
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenChatLieu)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaChatLieu }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaChatLieu }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaChatLieu })
+        </td>
+    </tr>
+}
+
+</table>
