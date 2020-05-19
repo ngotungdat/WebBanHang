@@ -21,7 +21,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- font-awesome icons -->
     <link href="~/Content/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <!-- //font-awesome icons -->
     <!-- js -->
     <script src="~/Content/js/jquery-1.11.1.min.js"></script>
@@ -32,12 +31,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script type="text/javascript" src="~/Content/js/move-top.js"></script>
     <script type="text/javascript" src="~/Content/js/easing.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
-            });
-        });
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
     </script>
     <!-- start-smoth-scrolling -->
 </head>
@@ -49,11 +48,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <a href="products.html">Today's special Offers !</a>
         </div>
         <div class="w3l_search">
-            @using (Html.BeginForm("Search", "Search", FormMethod.Post))
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
             {
                 <input type="text" name="strSearch" value="Nhập từ khóa..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Nhập từ khóa...';}" required="">
                 <input type="submit" value=" ">
-            }        
+            }
+            @*<form action="#" method="post">
+                </form>*@
         </div>
         <div class="product_list_header">
             <form action="#" method="post" class="last">
@@ -107,10 +108,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="w3ls_logo_products_left1">
                 <ul class="special_items">
-                    <li><a href="/Home/Index">Trang chủ</a><i>/</i></li>
-                    <li><a href="#">Giới thiệu</a><i>/</i></li>
-                    <li><a href="#">Chính sách</a><i>/</i></li>
-                    <li><a href="#">Dịch vụ</a></li>
+                    <li><a href="events.html">Events</a><i>/</i></li>
+                    <li><a href="about.html">About Us</a><i>/</i></li>
+                    <li><a href="products.html">Best Deals</a><i>/</i></li>
+                    <li><a href="services.html">Services</a></li>
                 </ul>
             </div>
             <div class="w3ls_logo_products_left1">
@@ -125,56 +126,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //header -->
     <!-- banner -->
     <div class="banner">
-        <!--Menu-->
-        @Html.Action("MenuPartial","Menu")   
-        <!--End Menu-->
-        <div class="w3l_banner_nav_right">
-            <section class="slider">
-                <div class="flexslider">
-                    <ul class="slides">
-                        <li>
-                            <div class="w3l_banner_nav_right_banner">
-                                <h3>Make your <span>food</span> with Spicy.</h3>
-                                <div class="more">
-                                    <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="w3l_banner_nav_right_banner1">
-                                <h3>Make your <span>food</span> with Spicy.</h3>
-                                <div class="more">
-                                    <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="w3l_banner_nav_right_banner2">
-                                <h3>upto <i>50%</i> off.</h3>
-                                <div class="more">
-                                    <a href="products.html" class="button--saqui button--round-l button--text-thick" data-text="Shop now">Shop now</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-            <!-- flexSlider -->
-            <link rel="stylesheet" href="~/Content/css/flexslider.css" type="text/css" media="screen" property="" />
-            <script defer src="~/Content/js/jquery.flexslider.js"></script>
-            <script type="text/javascript">
-                $(window).load(function () {
-                    $('.flexslider').flexslider({
-                        animation: "slide",
-                        start: function (slider) {
-                            $('body').removeClass('loading');
-                        }
-                    });
-                });
-            </script>
-            <!-- //flexSlider -->
-        </div>
-        <div class="clearfix"></div>
+        @Html.Action("MenuPartial", "Menu")
     </div>
 
     @RenderBody()

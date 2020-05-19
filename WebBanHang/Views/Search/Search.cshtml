@@ -1,18 +1,20 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
 }
 @model  IEnumerable<WebBanHang.Model.SanPham>
 
 <!--Phan trang-->
-@{ 
+@{
     int iDem = 0;
     int iCountProductInPage = 8;
     int iTrang = 1;
 }
 
-<div class="top-brands">
+<div class="top-brands" style="padding:1em !important">
     <div class="container">
-        <h3>Top Products</h3>
+        <h3>Kết quả tìm kiếm</h3>
         <div class="agile_top_brands_grids">
 
             @foreach (var item in Model)
@@ -45,8 +47,7 @@
                                                     <input type="hidden" name="currency_code" value="USD" />
                                                     <input type="hidden" name="return" value=" " />
                                                     <input type="hidden" name="cancel_return" value=" " />
-                                                    @*<input type="submit" name="submit" value="Add to cart" class="button" />*@
-                                                    <a href="@Url.Action("AddToCart","Cart",new { id=item.MaSanPham})">Mua hàng</a>
+                                                    <input type="submit" name="submit" value="Add to cart" class="button" />
                                                 </fieldset>
 
                                             </form>
@@ -73,23 +74,25 @@
             }
         </div>
     </div>
-    </div>   
+</div>
 
 <style>
-    .top_brand_left{
-        display:none;
-        margin-bottom:20px;
+    .top_brand_left {
+        display: none;
+        margin-bottom: 20px;
     }
+
     .trang1 {
         display: block;
     }
-    .paginationJS{
-        text-align:center;
+    .paginationJS {
+        text-align: center;
     }
-    .paginationJS a{
-        border:1px solid #0094ff;
-        border-radius:3px;
-        padding:8px 12px;
+
+    .paginationJS a {
+            border: 1px solid #0094ff;
+            border-radius: 3px;
+            padding: 8px 12px;
     }
 </style>
 
@@ -100,3 +103,5 @@
         $("." + pageCount).show();
     })
 </script>
+
+
