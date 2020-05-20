@@ -1,0 +1,50 @@
+﻿@model WebBanHang.Models.CartModel
+@if (Model != null && Model.Items.Count > 0)
+{
+    <div class="panel panel-default" style="position: absolute;z-index: 9999;">
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <table class="table">
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <td>
+                                    <a class="minicart-name" href="https://localhost:44366/Home/Index">
+                                        @item.iName
+                                    </a>
+                                </td>
+                                <td>
+                                    @item.iSoLuong
+                                </td>
+                                <td>
+                                    @item.iTotalPrice
+                                </td>
+                                <td>
+                                    <a href="#" class="cart-item-remove" data-id="@item.iId">X</a>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </li>
+            </ul>
+            <div class="minicart-footer">
+                <div class="minicart-subtotal">
+                    Subtotal: @Model.CartTotal
+                </div>
+                <button class="minicart-submit" type="submit" data-minicart-alt="undefined">
+                    Check Out with <img src="//cdnjs.cloudflare.com/ajax/libs/minicart/3.0.1/paypal_65x18.png" width="65" height="18" alt="PayPal">
+                </button>
+                @* TODO add goToCart button *@
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            Cart is empty
+        </div>
+    </div>
+}

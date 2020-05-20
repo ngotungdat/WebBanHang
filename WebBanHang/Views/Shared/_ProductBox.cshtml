@@ -1,0 +1,23 @@
+﻿@model WebBanHang.Model.SanPham
+
+<div>
+    <div class="hover14 column">
+        <div class="agile_top_brand_left_grid">
+            <div class="tag"><img src="~/Content/images/tag.png" alt=" " class="img-responsive" /></div>
+            <div class="agile_top_brand_left_grid1">
+                <figure>
+                    <div class="snipcart-Model block">
+                        <div class="snipcart-thumb">
+                            <a href="@Url.Action("Detailes","Home",new { id=Model.MaSanPham})"><img title=" " alt=" " src="~/Areas/Administrator/Content/images/products/@Model.HinhMinhHoa" class="img-responsive" style="height:180px" /></a>
+                            <p>@Model.TenSanPham</p>
+                            <h4>@Model.DonGia $</h4>
+                        </div>
+                        <div class="snipcart-details top_brand_home_details">
+                            <button class="button addToCart" data-id="@Model.MaSanPham">Mua hàng</button>
+                        </div>
+                    </div>
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>

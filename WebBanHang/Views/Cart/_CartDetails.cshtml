@@ -1,0 +1,155 @@
+﻿@model WebBanHang.Models.CartModel
+
+@if (Model == null || Model.Items.Count == 0)
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            Cart is empty
+        </div>
+    </div>
+}
+else
+{
+    <div class="privacy about">
+        <h3>Chec<span>kout</span></h3>
+
+        <div class="checkout-right">
+            <h4>Your shopping cart contains: <span>@Model.Items.Count Product(s)</span></h4>
+            <table class="timetable_sub">
+                <thead>
+                    <tr>
+                        <th>SL No.</th>
+                        <th>Product</th>
+                        <th>Quality</th>
+                        <th>Product Name</th>
+
+                        <th>Price</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(var i = 0; i < Model.Items.Count; i++)
+                        {
+                            var item = Model.Items[i];
+                    <tr class="rem1">
+                        <td class="invert">@(i + 1)</td>
+                        <td class="invert-image"><a href="single.html">
+                            @* TODO image *@
+                            <img src="images/1.png" alt=" " class="img-responsive"></a></td>
+                        <td class="invert">
+                            <div class="quantity">
+                                <div class="quantity-select">
+                                    <div class="entry value-minus decrement-item" data-id="@item.iId">&nbsp;</div>
+                                    <div class="entry value"><span>@item.iSoLuong</span></div>
+                                    <div class="entry value-plus active increment-item" data-id="@item.iId">&nbsp;</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="invert">@item.iName</td>
+
+                        <td class="invert">@item.iTotalPrice</td>
+                        <td class="invert">
+                            <div class="rem">
+                                <a href="#" class="close1 item-remove" data-id="@item.iId"> </a>
+                            </div>
+
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="checkout-left">
+            <div class="col-md-4 checkout-left-basket">
+                <h4>Continue to basket</h4>
+                <ul>
+                    @foreach (var item in Model.Items)
+                    {
+                        <li>@item.iName <span>@item.iTotalPrice </span></li>
+                    }
+                    @*<li>Total Service Charges <i>-</i> <span>$15.00</span></li>*@
+                    <li>Total <span>@Model.CartTotal</span></li>
+                </ul>
+            </div>
+            <div class="col-md-8 address_form_agile">
+                <h4>Add a new Details</h4>
+                <form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
+                    <section class="creditly-wrapper wthree, w3_agileits_wrapper">
+                        <div class="information-wrapper">
+                            <div class="first-row form-group">
+                                <div class="controls">
+                                    <label class="control-label">Full name: </label>
+                                    <input class="billing-address-name form-control" type="text" name="name" placeholder="Full name">
+                                </div>
+                                <div class="w3_agileits_card_number_grids">
+                                    <div class="w3_agileits_card_number_grid_left">
+                                        <div class="controls">
+                                            <label class="control-label">Mobile number:</label>
+                                            <input class="form-control" type="text" placeholder="Mobile number">
+                                        </div>
+                                    </div>
+                                    <div class="w3_agileits_card_number_grid_right">
+                                        <div class="controls">
+                                            <label class="control-label">Landmark: </label>
+                                            <input class="form-control" type="text" placeholder="Landmark">
+                                        </div>
+                                    </div>
+                                    <div class="clear"> </div>
+                                </div>
+                                <div class="controls">
+                                    <label class="control-label">Town/City: </label>
+                                    <input class="form-control" type="text" placeholder="Town/City">
+                                </div>
+                                <div class="controls">
+                                    <label class="control-label">Address type: </label>
+                                    <select class="form-control option-w3ls">
+                                        <option>Office</option>
+                                        <option>Home</option>
+                                        <option>Commercial</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="submit check_out">Delivery to this Address</button>
+                        </div>
+                    </section>
+                </form>
+                <div class="checkout-right-basket">
+                    <a href="payment.html">Make a Payment <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                </div>
+            </div>
+
+            <div class="clearfix"> </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        $(function () {
+            var $cartDetails = $('#cart-details');
+            $('.decrement-item').click(function (e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                $.post('@Url.Action("DecrementQuantityForCartItem", "Cart")', { id }, function (response) {
+                    $cartDetails.html(response);
+                });
+            });
+            $('.increment-item').click(function (e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                $.post('@Url.Action("IncrementQuantityForCartItem", "Cart")', { id }, function (response) {
+                    $cartDetails.html(response);
+                });
+            });
+
+            $('.item-remove').click(function (e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                $.post('@Url.Action("RemoveFromCart", "Cart")', { id, inCart: true }, function (response) {
+                    $cartDetails.html(response);
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,17 @@
+﻿@model IList<WebBanHang.Model.SanPham>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewBag.CategoryName</h1>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-3">
+            @Html.Partial("_ProductBox", product)
+        </div>
+    }
+</div>
+

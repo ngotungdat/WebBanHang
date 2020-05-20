@@ -140,12 +140,16 @@
     <Compile Include="Areas\Administrator\Controllers\TheLoaiController.cs" />
     <Compile Include="Areas\Administrator\Controllers\USERController.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\GioHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -4791,13 +4795,17 @@
     <Content Include="Views\Shared\_LayoutPage.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Menu\MenuPartial.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\MiniCart.cshtml" />
+    <Content Include="Views\Cart\_CartDetails.cshtml" />
+    <Content Include="Views\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Shared\_ProductBox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrator\Content\images\macbook\" />
     <Folder Include="Areas\Administrator\Data\" />
-    <Folder Include="Models\" />
-    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

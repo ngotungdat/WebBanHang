@@ -11,6 +11,7 @@ namespace WebBanHang.Controllers
     public class HomeController : Controller
     {
         WebBanHangDbContext db = new WebBanHangDbContext();
+
         public ActionResult Index()
         {
             var sp = from s in db.SanPhams select s;

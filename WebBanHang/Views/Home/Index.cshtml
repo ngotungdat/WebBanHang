@@ -34,7 +34,8 @@
                                             <h4>@item.DonGia $</h4>
                                         </div>
                                         <div class="snipcart-details top_brand_home_details">
-                                            <form action="checkout.html" method="post">
+                                            <button class="button addToCart" data-id="@item.MaSanPham">Mua hàng</button>
+                                            @*<form action="checkout.html" method="post">
                                                 <fieldset>
                                                     <input type="hidden" name="cmd" value="_cart" />
                                                     <input type="hidden" name="add" value="1" />
@@ -45,11 +46,10 @@
                                                     <input type="hidden" name="currency_code" value="USD" />
                                                     <input type="hidden" name="return" value=" " />
                                                     <input type="hidden" name="cancel_return" value=" " />
-                                                    @*<input type="submit" name="submit" value="Add to cart" class="button" />*@
-                                                    <a href="@Url.Action("AddToCart","Cart",new { id=item.MaSanPham})">Mua hàng</a>
+                                                    <input type="submit" name="submit" value="Add to cart" class="button" />
                                                 </fieldset>
 
-                                            </form>
+                                            </form>*@
 
                                         </div>
                                     </div>
@@ -94,9 +94,11 @@
 </style>
 
 <script>
-    $('.btnTrang').click(function () {
-        $(".top_brand_left").hide();
-        var pageCount = $(this).attr("data-sotrang");
-        $("." + pageCount).show();
+    $(function () {
+        $('.btnTrang').click(function () {
+            $(".top_brand_left").hide();
+            var pageCount = $(this).attr("data-sotrang");
+            $("." + pageCount).show();
+        });
     })
 </script>

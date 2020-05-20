@@ -19,6 +19,8 @@ namespace WebBanHang.Controllers
         public ActionResult MenuPartial()
         {
             var listSP = db.SanPhams;
+            var danhSachTheLoai = db.TheLoais.OrderBy(t => t.TenTheLoai).ToList();
+            ViewBag.danhSachTheLoai = danhSachTheLoai;
             return PartialView(listSP);
         }      
     }
