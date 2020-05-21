@@ -1,7 +1,7 @@
 ﻿@model WebBanHang.Models.CartModel
 @if (Model != null && Model.Items.Count > 0)
 {
-    <div class="panel panel-default" style="position: absolute;z-index: 9999;">
+    <div class="panel panel-default" style="position: absolute">
         <div class="panel-body">
             <ul class="list-group">
                 <li class="list-group-item">
@@ -32,19 +32,17 @@
                 <div class="minicart-subtotal">
                     Subtotal: @Model.CartTotal
                 </div>
-                <button class="minicart-submit" type="submit" data-minicart-alt="undefined">
-                    Check Out with <img src="//cdnjs.cloudflare.com/ajax/libs/minicart/3.0.1/paypal_65x18.png" width="65" height="18" alt="PayPal">
-                </button>
-                @* TODO add goToCart button *@
+                <div>
+                    <a href="@Url.Action("Index", "Cart")">View Cart Detalis</a>
+                </div>
             </div>
         </div>
     </div>
 }
 else
 {
-    <div class="panel panel-default">
-        <div class="panel-body">
-            Cart is empty
-        </div>
+    <div class="alert alert-warning alert-dismissible" role="alert" style="position:fixed">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Warning,Cart Empty!</strong> Please select the product to buy.
     </div>
 }

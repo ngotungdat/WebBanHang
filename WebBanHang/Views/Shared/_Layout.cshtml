@@ -19,6 +19,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- //for-mobile-apps -->
     <link href="~/Content/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/Content/css/myStyle.css" rel="stylesheet" />
     <!-- font-awesome icons -->
     <link href="~/Content/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -55,19 +56,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <input type="submit" value=" ">
             }
         </div>
-        <div class="product_list_header">
+        <div class="product_list_header" style="position:relative">
             <div id="view-cart-link">
-
-                <a href="@Url.Action("Index", "Cart")">View your cart</a>
-                <div id="mini-cart" style="display:none;">
+                <a href="@Url.Action("Index", "Cart")">
+                    <img src="~/Content/images/cart.png" />
+                </a>
+                <div id="mini-cart" style="display:none">
                     @Html.Action("MiniCart", "Cart")
                 </div>
             </div>
-            @*<div class="last">
-                    <fieldset>
-                        <input type="submit" name="submit" value="View your cart" class="button" />
-                    </fieldset>
-                </div>*@
         </div>
         <div class="w3l_header_right">
             <ul>

@@ -16,7 +16,7 @@ namespace WebBanHang.Controllers
 
         private const string CartName = "giohang";
 
-        private CartModel PrepareCartModel()
+        private CartModel PrepareCartModel() //Count total price
         {
             var sessionCart = Session[CartName] as List<GioHang>;
             if (sessionCart == null) return null;
@@ -29,7 +29,7 @@ namespace WebBanHang.Controllers
             return model;
         }
 
-        public ActionResult Index()
+        public ActionResult Index()  //return count total price present
         {
             var sessionCart = Session[CartName] as List<GioHang>;
 
@@ -40,13 +40,14 @@ namespace WebBanHang.Controllers
         public ActionResult MiniCart()
         {
             var sessionCart = Session[CartName] as List<GioHang>;
-            if (sessionCart == null)
+            if (sessionCart == null) //Check cart empty then return partialview empty.
                 return PartialView(null);
 
             var model = new CartModel
             {
-                Items = sessionCart,
+                Items = sessionCart, //Items duoc khoi tao new list<giohang>
                 TotalPrice = sessionCart.Sum(sp => (sp.iPrice ?? 0) * (sp.iSoLuong ?? 0))
+                //Count toatal of cart
             };
 
             return PartialView(model);
@@ -86,7 +87,6 @@ namespace WebBanHang.Controllers
             }
             var model = PrepareCartModel();
             return PartialView("MiniCart", model);
-            //return RedirectToAction("Index","Home");
         }
 
         [HttpPost]

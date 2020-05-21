@@ -15,7 +15,7 @@ namespace WebBanHang
 
             routes.MapRoute(
                 name: "Category",
-                url: "{categoryId}/{categoryName}",
+                url: "c/{categoryId}/{categoryName}",
                 defaults: new { controller = "Category", action = "Index", categoryName = UrlParameter.Optional },
                 namespaces: new string[] { "WebBanHang.Controllers" }
             );

@@ -1,0 +1,7 @@
+﻿/*-----------------Cart icon------------*/
+#view-cart-link img {
+    border: 1px solid white;
+    padding: 8px 13px;
+    border-radius: 3px;
+    margin-top: 6px
+}
