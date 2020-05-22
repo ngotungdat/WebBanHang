@@ -131,27 +131,37 @@ else
     <script>
         $(function () {
             var $cartDetails = $('#cart-details');
+            var $miniCart = $('#mini-cart');
+
+            var removeItem$ = (id) => Promise.resolve($.post('@Url.Action("RemoveFromCart", "Cart")', { id, inCart: true }));
+            var miniCart$ = () => Promise.resolve($.get('@Url.Action("MiniCart", "Cart")'));
+            var decrementQuantity$ = (id) => Promise.resolve($.post('@Url.Action("DecrementQuantityForCartItem", "Cart")', { id }));
+            var incrementQuantity$ = (id) => Promise.resolve($.post('@Url.Action("IncrementQuantityForCartItem", "Cart")', { id }));
+
+            async function updateHtml(action$) {
+                var cartDetail = await action$;
+                $cartDetails.html(cartDetail);
+
+                var miniCart = await miniCart$();
+                $miniCart.html(miniCart);
+            }
+
             $('.decrement-item').click(function (e) {
                 e.preventDefault();
                 var id = $(this).data('id');
-                $.post('@Url.Action("DecrementQuantityForCartItem", "Cart")', { id }, function (response) {
-                    $cartDetails.html(response);
-                });
+                updateHtml(decrementQuantity$(id));
             });
+
             $('.increment-item').click(function (e) {
                 e.preventDefault();
                 var id = $(this).data('id');
-                $.post('@Url.Action("IncrementQuantityForCartItem", "Cart")', { id }, function (response) {
-                    $cartDetails.html(response);
-                });
+                updateHtml(incrementQuantity$(id));
             });
 
             $('.item-remove').click(function (e) {
                 e.preventDefault();
                 var id = $(this).data('id');
-                $.post('@Url.Action("RemoveFromCart", "Cart")', { id, inCart: true }, function (response) {
-                    $cartDetails.html(response);
-                });
+                updateHtml(removeItem$(id));
             });
         });
     </script>
